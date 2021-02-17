@@ -75,11 +75,12 @@ pickle_in = open("studentmodel.pickle", "rb") #opening back our file
 
 linear = pickle.load(pickle_in) #We are loading back our model into a variable
 
-print("\n Our final best model had an accuracy of " + str(round((best)*100)) + "%") 
+#print("\n Our final best model had an accuracy of " + str(round((best)*100)) + "%") 
 
 ''' 
 
 let's see our predicted values
+
 
 
 predictions = linear.predict(x_test)
@@ -90,5 +91,21 @@ for x in range(len(predictions)):
     #x_test[x] is the student's date (in order : G1, G2, Study time, failures, absence)
     #y_test[x] is the student's actual grade
 
+'''
+
+''' 
+
+Information display in the form of a graph | we will display here the corrolation of a feature "p" with the final grade of a student
 
 '''
+
+p = "absences" #Pick one of the features 
+
+style.use("ggplot")
+
+pyplot.scatter(data[p], data["G3"]) #Using a scatter plot with x and y
+
+pyplot.xlabel(p) #x label name
+pyplot.ylabel("Final Grade") #y label name
+
+pyplot.show()
